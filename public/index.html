@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smart Parking Finder</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f1f7ff;
+      color: #16324f;
+    }
+    header {
+      background: #073b78;
+      color: white;
+      padding: 22px;
+      text-align: center;
+    }
+    header h1 { margin: 0 0 8px; }
+    .hero {
+      text-align: center;
+      padding: 35px 16px;
+    }
+    .hero h2 { font-size: 28px; }
+    .search {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin: 20px auto;
+    }
+    input {
+      padding: 13px;
+      width: 260px;
+      border: 1px solid #aac5e8;
+      border-radius: 8px;
+    }
+    button {
+      background: #087fdb;
+      color: white;
+      border: 0;
+      border-radius: 8px;
+      padding: 12px 18px;
+      cursor: pointer;
+    }
+    .lots {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 18px;
+      padding: 10px 20px 40px;
+    }
+    .card {
+      background: white;
+      padding: 22px;
+      border-radius: 14px;
+      width: 280px;
+      box-shadow: 0 4px 14px #0001;
+    }
+    .card h3 { color: #0757a5; }
+    footer {
+      text-align: center;
+      padding: 18px;
+      background: #073b78;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>🅿️ Smart Parking Finder</h1>
+    <p>See → Choose → Reach</p>
+  </header>
+
+  <section class="hero">
+    <h2>Find Parking Without the Hassle!</h2>
+    <p>Find a parking location and check demo slot availability.</p>
+    <div class="search">
+      <input id="location" placeholder="Enter area or city">
+      <button onclick="searchParking()">Find Parking</button>
+    </div>
+    <p id="message"></p>
+  </section>
+
+  <section class="lots" id="parkingLots">
+    <div class="card">
+      <h3>🏢 City Centre Parking</h3>
+      <p>Location: Main Market</p>
+      <p>Demo available slots: <b>12</b></p>
+      <button onclick="bookSlot('City Centre Parking')">Select Parking</button>
+    </div>
+    <div class="card">
+      <h3>🏥 Hospital Parking</h3>
+      <p>Location: Hospital Road</p>
+      <p>Demo available slots: <b>8</b></p>
+      <button onclick="bookSlot('Hospital Parking')">Select Parking</button>
+    </div>
+    <div class="card">
+      <h3>🎓 College Parking</h3>
+      <p>Location: College Road</p>
+      <p>Demo available slots: <b>15</b></p>
+      <button onclick="bookSlot('College Parking')">Select Parking</button>
+    </div>
+  </section>
+
+  <footer>Smart Parking Finder | College Project Demo</footer>
+
+  <script>
+ 
+
+    function bookSlot(name) {
+      alert("You selected " + name +
+        ". This is a demo only; no real booking or payment is made.");
+    }
+  </script>
+
+<section style="padding:40px 20px;text-align:center;background:#f1f6fc;">
+  <h2>How Smart Parking Finder Works</h2>
+  <div style="display:flex;justify-content:center;gap:25px;flex-wrap:wrap;">
+    <div><h3>1. See</h3><p>Find nearby parking locations.</p></div>
+    <div><h3>2. Choose</h3><p>Compare available parking slots.</p></div>
+    <div><h3>3. Reach</h3><p>Navigate to your selected parking.</p></div>
+  </div>
+</section>
+
+<section style="padding:40px 20px;text-align:center;">
+  <h2>Investment Required</h2>
+  <h1 style="color:#087db5;">₹5,00,000</h1>
+  <p>Illustrative funding estimate for initial development and pilot launch.</p>
+  <p>Technology Development | Marketing | Server Hosting | Pilot Operations</p>
+</section>
+
+<section style="padding:40px 20px;text-align:center;background:#f1f6fc;">
+  <h2>Our Revenue Model</h2>
+  <p>Monthly Subscription from Parking Operators</p>
+  <p>One-time Setup and Integration Fee</p>
+  <p>Optional Booking Service Fee</p>
+  <p>Future Parking Analytics Services</p>
+</section>
+
+<section style="padding:30px;text-align:center;">
+  <h2>Our Vision</h2>
+  <p>Making parking easier, smarter and more accessible for everyone.</p>
+  <h3>See → Choose → Reach</h3>
+</section>
+</body>
+</html>
