@@ -1,7 +1,11 @@
 const express = require("express");
+const path = require("path");
+
 const app = express();
 
 app.use(express.json());
+
+// Allow frontend requests
 app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
@@ -14,18 +18,9 @@ app.use((req, res, next) => {
   next();
 });
 
-// Home route
-app.get("/", (req, res) => {
-  res.send("Smart Parking Finder Backend is Running!");
-});
+// Serve website files from public folder
+app.use(express.static(path.join(__dirname, "public")));
 
-// Backend health check
-app.get("/api/health", (req, res) => {
-  res.json({
-    success: true,
-    message: "Backend is working"
-  });
-});
 // Demo parking data
 const parkingLocations = [
   {
@@ -54,7 +49,15 @@ const parkingLocations = [
   }
 ];
 
-// Get all parking locations
+// Backend health check
+app.get("/api/health", (req, res) => {
+  res.json({
+    success: true,
+    message: "Backend is working"
+  });
+});
+
+// Get parking locations
 app.get("/api/parking", (req, res) => {
   res.json({
     success: true,
@@ -62,7 +65,8 @@ app.get("/api/parking", (req, res) => {
     data: parkingLocations
   });
 });
-// Demo payment status - NOT a real payment
+
+// Demo payment only - no real money transferred
 app.post("/api/test-payment", (req, res) => {
   const { amount, status } = req.body;
 
@@ -85,15 +89,15 @@ app.post("/api/test-payment", (req, res) => {
     paymentMode: "TEST_ONLY",
     amount,
     bookingConfirmed: false,
-    message:
-      status === "success"
-        ? "Test payment flow successful. No real money was transferred."
-        : "Test payment failed. No booking confirmed."
+    message: status === "success"
+      ? "Test payment successful. No real money transferred."
+      : "Test payment failed. No booking confirmed."
   });
 });
 
-const PORT = 3000;
+// Render provides PORT automatically
+const PORT = process.env.PORT || 3000;
 
-app.listen(PORT, () => {
-  console.log(`Server running at http://localhost:${PORT}`);
+app.listen(PORT, "0.0.0.0", () => {
+  console.log(`Smart Parking Finder running on port ${PORT}`);
 });
